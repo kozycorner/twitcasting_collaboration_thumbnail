@@ -8,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <title>ツイキャスの画面をコラボキャス用に分割するやつ</title>
   </head>
   <body>
@@ -15,26 +18,34 @@
     <div class="container">
       <!-- h1>ツイキャスの画面をコラボキャス用に分割するやつ</h1-->
       <h1>test application</h1>
+      <p>コラボ配信をしているツイキャスユーザの配信画面から、コラボ者のサムネイルの表示される範囲を切り出すアプリです。</p>
+      <p>※2020年5月30日時点のTwitCastingの仕様に基づき製作されています。</p>
+        <a href="" id="ss" download="html_ss.png">スクリーンショット(document.body全体)をダウンロード</a>
+
 
       <div class="row">
-        <div class="col-md-4 col-sm-12">
-          <canvas id='cvs' width='480' height='270'></canvas>
-
+        <div class="col-12 col-md-6 col-xl-4">
+          <div id="preview">
+            <img src="http://twitcasting.tv/img/movie-deleted.png">
+            <img id="thumbnail" src="http://twitcasting.tv/img/movie-deleted.png">
+            <img  id="overlay_frame" src="img/collabo4.png">
+          </div>
           <br>
 
-          <span>ライブ中のユーザのIDを入力してください</span>
+          <p>ライブ中のユーザのIDを入力してください</p>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">@</span>
             </div>
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            <button type="button" class="btn btn-primary" aria-describedby="basic-addon1">取得</button>
+            <input id="username" type=text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
           </div>
+          <button type="button" class="btn btn-primary btn-block" aria-describedby="basic-addon1" onclick="load_img()">取得</button>
 
-          <span>コラボキャスのタイプを選択してください</span>
+          <br>
+          <p>（オプション）コラボキャスのタイプを選択してください</p>
 
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 1em">
             <label class="btn btn-primary active">
               <input type="radio" name="options" id="collabo4" autocomplete="off" checked> 4人
             </label>
@@ -49,12 +60,47 @@
             </label>
           </div>
         </div>
-        <div class="col-md-8 col-sm-12">test</div>
+        
+        <div class="col-12 col-md-6 col-xl-8">
+          <div class="row">
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out01" width="96px" height="96px"></canvas>
+              <p>1人目用</p>
+            </div>     
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out02" width="96px" height="96px"></canvas>
+              <p>2人目用</p>
+            </div>  
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out03" width="96px" height="96px"></canvas>
+              <p>3人目用</p>
+            </div>  
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out04" width="96px" height="96px"></canvas>
+              <p>4人目用</p>
+            </div>
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out05" width="96px" height="96px"></canvas>
+              <p>5人目用</p>
+            </div>
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out06" width="96px" height="96px"></canvas>
+              <p>6人目用</p>
+            </div>
+            <div class="col-4 col-lg-4" style="text-align: center;">
+              <canvas id="out07" width="96px" height="96px"></canvas>
+              <p>7人目用</p>
+            </div>
+
+          </div>
+        </div>
 
       </div>
-
-
     </div>
+
+    <!-- script -->
+    <script type="text/javascript" src="script.js"></script>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
