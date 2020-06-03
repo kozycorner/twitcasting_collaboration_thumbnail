@@ -15,7 +15,7 @@ function load_img(){
 
 	var data={};
 
-	fetch("https://rdqtkr8gcd.execute-api.us-east-2.amazonaws.com/",{
+	fetch("https://ftst38ftcf.execute-api.us-east-2.amazonaws.com/",{
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, cors, *same-origin
 //        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
