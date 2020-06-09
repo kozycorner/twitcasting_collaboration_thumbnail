@@ -3,8 +3,8 @@ function load_img(){
 
 	var username = document.getElementById('username').value;
 
-	if(username==""){
-		username="null";
+	if(username == ""){
+		username = "null";
 	}
 
 	var url = 'https://apiv2.twitcasting.tv/users/'
@@ -13,19 +13,25 @@ function load_img(){
 	var thumbnail = document.getElementById('thumbnail');
 	thumbnail.setAttribute('src',url);
 
-	var data={};
+	var data = {};
 
-	fetch("https://ftst38ftcf.execute-api.us-east-2.amazonaws.com/",{
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
+	var messageArea = document.getElementById('message');
+	var message = "";
+
+	fetch("https://6lm35rjzad.execute-api.us-east-2.amazonaws.com/thumbnail",{
+        method : "POST", // *GET, POST, PUT, DELETE, etc.
+        mode : "cors", // no-cors, cors, *same-origin
 //        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
 //        credentials: "include", // include, same-origin, *omit
         headers: {
-            //"Content-Type": "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=utf-8",
             // "Content-Type": "application/x-www-form-urlencoded",
 //            "Access-Control-Allow-Origin": "*",
 //            "Access-Control-Request-Method": "GET",
         },
+    	body : {
+    		"n" : "test"
+    	},
         redirect: "follow", // manual, *follow, error
         referrer: "client", // no-referrer, *client
 
@@ -34,7 +40,9 @@ function load_img(){
 		return response.json();
 	})
 	.then(function(myJson) {
-		console.log(JSON.stringify(myJson));
+		//console.log(JSON.stringify(myJson));
+		messageArea.innerHTML=myJson;
+		//messageArea.innerHTML=JSON.stringify(myJson);
 	});
 
 }
@@ -65,8 +73,8 @@ $(function(){
 
 		var i;
 
-		for(i=1;i<=7;i++){
-			document.querySelector("#out div:nth-child("+i+")").style.display=(i > people ? "none" : "block");
+		for(i = 1;i <= 7;i++){
+			document.querySelector("#out div:nth-child(" + i + ")").style.display=(i > people ? "none" : "block");
 		}
 	}); 
 });
