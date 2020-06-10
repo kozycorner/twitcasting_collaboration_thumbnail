@@ -17,7 +17,7 @@ function load_img(){
 
 	var messageArea = document.getElementById('message');
 	var message = "";
-
+/*
 	fetch("https://6lm35rjzad.execute-api.us-east-2.amazonaws.com/thumbnail",{
         method : "POST", // *GET, POST, PUT, DELETE, etc.
         mode : "cors", // no-cors, cors, *same-origin
@@ -44,6 +44,34 @@ function load_img(){
 		messageArea.innerHTML=myJson;
 		//messageArea.innerHTML=JSON.stringify(myJson);
 	});
+*/
+	var base64Image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAEOCAIAAADe+FMwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBJREFUeNrs2LEJgEAQRUGVC+xCrMGytBwtyxrELszWBkQQDjyOmXyTH7xg24hoAChPZwIAgQZAoAEEGgCBBhBoAAQaAIEGEGgABBpAoAEQaAAEGkCgARBoAIEGQKABBBoAgQZAoAEEGgCBBhBoAAQaAIEGEGgABBpAoAEQaACBBkCgARBoAIEGQKABBBoAgQZAoAEEGgCBBhBoAAQaQKABEGgABBpAoAEQaACBBkCgARBoAIEGQKABBBoAgQZAoAEEGgCBBhBoAAQaQKABEGgABBpAoAEQaACBBkCgARBoAIEGQKABBBoAgQYQaAAEGgCBBhBoAAQaQKABEGgABBpAoAEQaACBBkCgAQQaAIEGQKABBBoAgQYQaAAEGgCBBhBoAAQaQKABEGgABBpAoAEQaACBBkCgAQQaAIEGQKABBBoAgQYQaAAEGgCBBhBoAAQaQKABEGgAgQZAoAEQaACBBkCgAQQaAIEGQKABBBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEQaACBBkCgAWqVTADkcq2DEV70yynQwG+2aTTCo3k/vp54cQAUSqABBBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEQaACBBkCgAQQaAIEGEGgABBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEEGgCBBkCgAQQaAIEGEGgABBoAgQYQaAAEGkCgARBoAIE2AYBAAyDQAAINgEADCDQAAg2AQAMINAACDSDQAAg0AAININAACDSAQAMg0AACDYBAAyDQAAINgEADCDQAAg2AQAMINAACDSDQAAg0gEADINAACDSAQAMg0AACDYBAAyDQAAINgEADCDQAAg0g0AAINAACDSDQAAg0gEADINAACDSAQAMg0AD1SiYAMpr3wwi5tBFhBYACeXEACDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINECVbgEGAJdUEDJBUY76AAAAAElFTkSuQmCC";
+
+	var thumbnail = document.getElementById('thumbnail');
+	thumbnail.setAttribute('src',base64Image);
+
+	var data = clop_img(base64Image, 368, 134, "out01b");
+}
+
+function clop_img(base64Image, x, y, outId){
+
+	var canvas = document.getElementById('out01');
+	var ctx = canvas.getContext('2d');
+
+	var img = new Image();
+
+	x *= -1;
+	y *= -1;
+
+	img.onload = e => {
+		ctx.drawImage(img, x, y);
+		const data = canvas.toDataURL("image/png");
+
+		var outImg = document.getElementById(outId);	
+		out01b.setAttribute('src',data);
+	}
+
+	img.src = base64Image;
 
 }
 
