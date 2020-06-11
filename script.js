@@ -21,21 +21,19 @@ function load_img(){
 
 	var messageArea = document.getElementById('message');
 	var message = "";
-/*
-	fetch("https://6lm35rjzad.execute-api.us-east-2.amazonaws.com/thumbnail",{
-        method : "POST", // *GET, POST, PUT, DELETE, etc.
-        mode : "cors", // no-cors, cors, *same-origin
-//        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-//        credentials: "include", // include, same-origin, *omit
+
+	fetch("https://rvg0hfg3jg.execute-api.us-east-2.amazonaws.com/main/getthumbnail?username=" + username ,{
+        method : "GET",
+        mode : "cors",
+        cache: "no-cache",
+        credentials: "omit",
         headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            // "Content-Type": "application/x-www-form-urlencoded",
+            //"Content-Type": "application/json; charset=utf-8",
+//            "Content-Type": "application/x-www-form-urlencoded",
 //            "Access-Control-Allow-Origin": "*",
 //            "Access-Control-Request-Method": "GET",
         },
-    	body : {
-    		"n" : "test"
-    	},
+//    	body : JSON.stringify({"username":"test",}),
         redirect: "follow", // manual, *follow, error
         referrer: "client", // no-referrer, *client
 
@@ -45,10 +43,10 @@ function load_img(){
 	})
 	.then(function(myJson) {
 		//console.log(JSON.stringify(myJson));
-		messageArea.innerHTML=myJson;
-		//messageArea.innerHTML=JSON.stringify(myJson);
+		//messageArea.innerHTML=myJson;
+		messageArea.innerHTML=JSON.stringify(myJson);
 	});
-*/
+
 
 	var thumbnail = document.getElementById('thumbnail');
 	thumbnail.setAttribute('src',base64Image);
