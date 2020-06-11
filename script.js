@@ -28,14 +28,14 @@ function load_img(){
         cache: "no-cache",
         credentials: "omit",
         headers: {
-            //"Content-Type": "application/json; charset=utf-8",
-//            "Content-Type": "application/x-www-form-urlencoded",
-//            "Access-Control-Allow-Origin": "*",
-//            "Access-Control-Request-Method": "GET",
+			"Origin" : "*",
+			"Access-Control-Request-Method" : "POST",
+			"Access-Control-Request-Headers" : "X-PINGOTHER, Content-Type",
+			"Access-Control-Max-Age" : "200",
         },
-//    	body : JSON.stringify({"username":"test",}),
-        redirect: "follow", // manual, *follow, error
-        referrer: "client", // no-referrer, *client
+
+        redirect: "follow",
+        referrer: "client",
 
     })
 	.then(function(response) {
@@ -44,7 +44,7 @@ function load_img(){
 	.then(function(myJson) {
 		//console.log(JSON.stringify(myJson));
 		//messageArea.innerHTML=myJson;
-		messageArea.innerHTML=JSON.stringify(myJson);
+		messageArea.innerHTML=myJson.body;
 	});
 
 
