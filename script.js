@@ -28,10 +28,8 @@ function load_img(){
         cache: "no-cache",
         credentials: "omit",
         headers: {
-			"Origin" : "*",
 			"Access-Control-Request-Method" : "POST",
 			"Access-Control-Request-Headers" : "X-PINGOTHER, Content-Type",
-			"Access-Control-Max-Age" : "200",
         },
 
         redirect: "follow",
