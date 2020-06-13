@@ -27,7 +27,9 @@
 			<div class="col-12 col-md-6 col-xl-4">
 				<div id="preview">
 					<img src="http://twitcasting.tv/img/movie-deleted.png">
-					<img id="thumbnail" src="http://twitcasting.tv/img/movie-deleted.png">
+					<img id="thumbnail" src="http://twitcasting.tv/img/movie-deleted.png" crossorigin
+="anonymous">
+					<!--canvas id="thumbnail" width="640px" height="360px"></canvas-->
 					<img id="overlay_frame" src="img/collabo4.png">
 				</div>
 				<br>
@@ -59,10 +61,6 @@
 						<input type="radio" name="options" id="collabo2" autocomplete="off" value=4> 2人
 					</label>
 				</div>
-			</div>
-
-			<div class="hidden">
-				<canvas id="thumbnailCanvas"></canvas>
 			</div>
 
 			<canvas id="draw" class="hidden" width="96px" height="96px"></canvas>

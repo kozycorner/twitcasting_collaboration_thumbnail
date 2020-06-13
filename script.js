@@ -11,8 +11,8 @@ function load_img(){
 		username = "null";
 	}
 
-	var url = 'https://apiv2.twitcasting.tv/users/'
-	+ username + '/live/thumbnail?size=large&position=latest';
+	var url = 'https://coiogn4in2.execute-api.us-east-2.amazonaws.com/main/twitcasting/'
+	+ username;
 
 	var thumbnail = document.getElementById('thumbnail');
 	thumbnail.setAttribute('src',url);
@@ -21,8 +21,8 @@ function load_img(){
 
 	var messageArea = document.getElementById('message');
 	var message = "";
-
-	fetch("https://rvg0hfg3jg.execute-api.us-east-2.amazonaws.com/main/getthumbnail?username=" + username ,{
+/*
+	fetch(url ,{
         method : "GET",
         mode : "cors",
         cache: "no-cache",
@@ -31,10 +31,8 @@ function load_img(){
 			"Access-Control-Request-Method" : "POST",
 			"Access-Control-Request-Headers" : "X-PINGOTHER, Content-Type",
         },
-
         redirect: "follow",
         referrer: "client",
-
     })
 	.then(function(response) {
 		return response.json();
@@ -43,11 +41,12 @@ function load_img(){
 		//console.log(JSON.stringify(myJson));
 		//messageArea.innerHTML=myJson;
 		messageArea.innerHTML=myJson.body;
+		base64Image = myJson.body;
 	});
-
+*/
 
 	var thumbnail = document.getElementById('thumbnail');
-	thumbnail.setAttribute('src',base64Image);
+	thumbnail.setAttribute('src',url);
 
 	clop_img();
 }
@@ -82,6 +81,9 @@ function clop_img(){
 
 function draw_img(x, y, outId){
 
+//	var thumbnail = document.getElementById('thumbnail');
+//	var ctxThumbnail = thumbnail.getContext('2d');
+
 	var canvas = document.getElementById('draw');
 	switch(option){
 		case '3':
@@ -100,6 +102,7 @@ function draw_img(x, y, outId){
 	y *= -1;
 
 	img.onload = e => {
+//		ctxThumbnail.drawImage(img, 0, 0);
 		ctx.drawImage(img, x, y);
 		const data = canvas.toDataURL("image/png");
 
