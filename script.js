@@ -16,27 +16,38 @@ function load_img(){
 	url = 'https://coiogn4in2.execute-api.us-east-2.amazonaws.com/main/twitcasting/'
 	+ username;
 
-	var thumbnail = document.getElementById('thumbnail');
-	thumbnail.setAttribute('src',url);
+//	var thumbnail = document.getElementById('thumbnail');
+//	thumbnail.setAttribute('src',url);
 
-	draw_thumbnail();
+	draw_thumbnail(url);
 }
 
-function draw_thumbnail(){
+function draw_thumbnail(url){
 	var canvas = document.getElementById('hidden_thumbnail');
 	canvas.setAttribute('width','480px');
 	canvas.setAttribute('height','270px');
 	var ctx = canvas.getContext('2d');
-	var img = document.getElementById('thumbnail');
-
+//	var img = document.getElementById('thumbnail');
 //	var img = new Image()
+
+    var img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = url;
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, 480, 270);
+        base64Image = canvas.toDataURL("image/png");
+    	var thumbnail = document.getElementById('thumbnail');
+		thumbnail.setAttribute('src',base64Image);
+		clop_img();
+    }
+/*
 
 	img.onload = e => {
 		ctx.drawImage(img, 0, 0, 480, 270);
 		base64Image = canvas.toDataURL("image/jpeg");
 		clop_img();
 	}
-
+*/
 //	img.src = url;
 }
 
