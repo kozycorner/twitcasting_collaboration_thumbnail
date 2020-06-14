@@ -27,7 +27,7 @@
 			<div class="col-12 col-md-6 col-xl-4">
 				<div id="preview">
 					<img src="http://twitcasting.tv/img/movie-deleted.png">
-					<img id="thumbnail" src="http://twitcasting.tv/img/movie-deleted.png" crossorigin="anonymous">
+					<img id="thumbnail" src="" crossorigin="anonymous">
 					<canvas id="hidden_thumbnail" width="480px" height="270px"></canvas>
 					<img id="overlay_frame" src="img/collabo4.png">
 				</div>
@@ -41,10 +41,10 @@
 					</div>
 					<input id="username" type=text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 				</div>
-				<button type="button" class="btn btn-primary btn-block" aria-describedby="basic-addon1" onclick="load_img()">取得</button>
+				<button type="button" class="btn btn-primary btn-block" aria-describedby="basic-addon1" onclick="main()">取得</button>
 
 				<br>
-				<p>（オプション）コラボキャスのタイプを選択してください</p>
+				<p>コラボキャスのタイプを選択してください</p>
 
 				<div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 1em">
 					<label class="btn btn-primary active">
@@ -66,15 +66,15 @@
 
 			<div class="col-12 col-md-6 col-xl-8">
 				<div class="row" id="out">
-					<div class="col-4 col-lg-4" style="text-align: center; display:block;">
+					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out01" src="" width="96px" height="96px">
 						<p>1人目用</p>
 					</div>  
-					<div class="col-4 col-lg-4" style="text-align: center; display:block;">
+					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out02" src="" width="96px" height="96px">
 						<p>2人目用</p>
 					</div> 
-					<div class="col-4 col-lg-4" style="text-align: center; display:block;">
+					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out03" src="" width="96px" height="96px">
 						<p>3人目用</p>
 					</div> 

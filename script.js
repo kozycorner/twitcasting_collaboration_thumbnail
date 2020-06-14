@@ -1,10 +1,12 @@
-var base64Image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAEOCAIAAADe+FMwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA5JJREFUeNrs10FuwjAQQNFMlQ0XYev7H8NbLjMIRRVIVSMcyQg7723oJmCG6GcaNXMB4Pv8GAGAQAMg0AACDYBAAwg0AAINgEADCDQAAg0g0AAINAACDSDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAINgEADCDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDSAQAMg0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDSDQAAg0AAININAACDSAQAMg0AAINIBAAyDQALNaWy+4RpgadHJJM5hZXdp+YBs0wCwb9OaWHvR7/1uMO5+yxIHn/Bnms03m2B70/nx6vPMc8xnd63xs0ADDE2gAgQZAoAEEGgCBBhBoAAQaAIEGEGgABBpAoAEQaAAEGkCgARBoAIEGQKABBBoAgQZAoAEEGgCBBhBoAAQaAIEGEGgABBpAoAH4hLX1gsuSj5cwur/y+WeM/S2K+eyev+N8Yob7v4jBf/NJGzTAOTfoTc3xvmqJvue/xvMDbpnDnf9393l8TF1GPf/o90+PO+cz5y8vy7/7Z//8NmiA4Qk0gEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDSAQAMg0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDSDQRgAg0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDTAGUXNbLqghKEBHFHbcmuDBvhWa+8nAADH2KABBBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEQaACBBkCgAQQaAIEGEGgABBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEEGgCBBkCgAQQaAIEGEGgABBoAgQYQaAAEGmBKdwEGAMCNQSR7S12yAAAAAElFTkSuQmCC";
+// 座標デバッグ用の画像
+// よかったらお使いください
+// var base64Image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAEOCAIAAADe+FMwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA5JJREFUeNrs10FuwjAQQNFMlQ0XYev7H8NbLjMIRRVIVSMcyQg7723oJmCG6GcaNXMB4Pv8GAGAQAMg0AACDYBAAwg0AAINgEADCDQAAg0g0AAINAACDSDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAINgEADCDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMg0AACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAg0gEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDSAQAMg0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDSDQAAg0AAININAACDSAQAMg0AAINIBAAyDQALNaWy+4RpgadHJJM5hZXdp+YBs0wCwb9OaWHvR7/1uMO5+yxIHn/Bnms03m2B70/nx6vPMc8xnd63xs0ADDE2gAgQZAoAEEGgCBBhBoAAQaAIEGEGgABBpAoAEQaAAEGkCgARBoAIEGQKABBBoAgQZAoAEEGgCBBhBoAAQaAIEGEGgABBpAoAH4hLX1gsuSj5cwur/y+WeM/S2K+eyev+N8Yob7v4jBf/NJGzTAOTfoTc3xvmqJvue/xvMDbpnDnf9393l8TF1GPf/o90+PO+cz5y8vy7/7Z//8NmiA4Qk0gEADINAAAg2AQAMINAACDYBAAwg0AAININAACDQAAg0g0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDSAQAMg0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDSDQRgAg0AAINIBAAyDQAAINgEADINAAAg2AQAMINAACDYBAAwg0AAININAACDTAGUXNbLqghKEBHFHbcmuDBvhWa+8nAADH2KABBBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEQaACBBkCgAQQaAIEGEGgABBoAgQYQaAAEGkCgARBoAAQaQKABEGgAgQZAoAEEGgCBBkCgAQQaAIEGEGgABBoAgQYQaAAEGmBKdwEGAMCNQSR7S12yAAAAAElFTkSuQmCC";
 
 var option = 1;
 
 var url = "";
 
-function load_img(){
+function main(){
 	const output = document.getElementById('thumbnail');
 
 	var username = document.getElementById('username').value;
@@ -13,22 +15,12 @@ function load_img(){
 		username = "null";
 	}
 
-	url = 'https://coiogn4in2.execute-api.us-east-2.amazonaws.com/main/twitcasting/'
-	+ username;
+	url = 'https://coiogn4in2.execute-api.us-east-2.amazonaws.com/main/twitcasting/' + username;
 
-//	var thumbnail = document.getElementById('thumbnail');
-//	thumbnail.setAttribute('src',url);
-
-	draw_thumbnail(url);
-}
-
-function draw_thumbnail(url){
 	var canvas = document.getElementById('hidden_thumbnail');
 	canvas.setAttribute('width','480px');
 	canvas.setAttribute('height','270px');
 	var ctx = canvas.getContext('2d');
-//	var img = document.getElementById('thumbnail');
-//	var img = new Image()
 
     var img = new Image();
     img.crossOrigin = "anonymous";
@@ -40,15 +32,6 @@ function draw_thumbnail(url){
 		thumbnail.setAttribute('src',base64Image);
 		clop_img();
     }
-/*
-
-	img.onload = e => {
-		ctx.drawImage(img, 0, 0, 480, 270);
-		base64Image = canvas.toDataURL("image/jpeg");
-		clop_img();
-	}
-*/
-//	img.src = url;
 }
 
 
@@ -82,9 +65,6 @@ function clop_img(){
 
 function draw_img(x, y, outId){
 
-//	var thumbnail = document.getElementById('thumbnail');
-//	var ctxThumbnail = thumbnail.getContext('2d');
-
 	var canvas = document.getElementById('draw');
 	switch(option){
 		case '3':
@@ -96,17 +76,9 @@ function draw_img(x, y, outId){
 			canvas.setAttribute('height','96px');
 	}
 	var ctx = canvas.getContext('2d');
-
-//	var img = new Image();
-
 	var img = new Image();
-//	img = document.getElementById('hidden_thumbnail');
-
-//	x *= -1;
-//	y *= -1;
 
 	img.onload = e => {
-//		ctxThumbnail.drawImage(img, 0, 0);
 		ctx.drawImage(img, x, y, 96, 96, 0, 0, 96, 96);
 		const data = canvas.toDataURL("image/png");
 
@@ -118,7 +90,7 @@ function draw_img(x, y, outId){
 	
 }
 
-$(function(){
+$(function(){ // ラジオボタン選択時の処理
 	var frame = document.getElementById('overlay_frame');
 	var people = 1;
 
