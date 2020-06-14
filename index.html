@@ -17,10 +17,8 @@
 
 	<div class="container">
 		<h1>ツイキャスの画面をコラボキャス用に分割するやつ</h1>
-		<p>コラボ配信をしているツイキャスユーザの配信画面から、コラボ者のサムネイルの表示される範囲を切り出すアプリです。</p>
-		<p>※2020年5月30日時点のTwitCastingの仕様に基づき製作されています。</p>
+		<p>コラボ配信をしているツイキャスユーザの配信画面から、コラボしているユーザのサムネイルの表示領域を切り出すアプリです。</p>
 
-		<p id="message"></p>
 
 		<div class="row">
 			<div class="col-12 col-md-6 col-xl-4">
@@ -32,7 +30,10 @@
 				</div>
 				<br>
 
-				<p>ライブ中のユーザのIDを入力してください</p>
+				<p>
+					ライブ中のユーザのIDを入力してください<br>
+					（取得にはボタンを押してから2秒ほどかかります）
+				</p>
 
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
@@ -43,14 +44,17 @@
 				<button type="button" class="btn btn-primary btn-block" aria-describedby="basic-addon1" onclick="main()">取得</button>
 
 				<br>
-				<p>コラボキャスのタイプを選択してください</p>
+				<p>
+					コラボキャスのタイプを選択してください<br>
+					（10人コラボ用・誰でもコラボ用は開発中です。）
+				</p>
 
 				<div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-bottom: 1em">
 					<label class="btn btn-primary active">
 						<input type="radio" name="options" id="collabo4" autocomplete="off" value=1> 4人
 					</label>
 					<label class="btn btn-primary">
-						<input type="radio" name="options" id="collabo4l" autocomplete="off" value=2> 4人（左）
+						<input type="radio" name="options" id="collabo4l" autocomplete="off" value=2> 4人左
 					</label>
 					<label class="btn btn-primary">
 						<input type="radio" name="options" id="collabo8" autocomplete="off" value=3> 8人
@@ -58,47 +62,70 @@
 					<label class="btn btn-primary">
 						<input type="radio" name="options" id="collabo2" autocomplete="off" value=4> 2人
 					</label>
+					<label class="btn btn-primary disabled">
+						<input type="radio" name="options" id="collabo2" autocomplete="off" disabled> 10人
+					</label>
+					<label class="btn btn-primary disabled">
+						<input type="radio" name="options" id="collabo2" autocomplete="off" disabled> 誰でも
+					</label>
 				</div>
 			</div>
 
 			<canvas id="draw" class="hidden" width="96px" height="96px"></canvas>
 
 			<div class="col-12 col-md-6 col-xl-8">
+
+				<iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=9&l=ez&f=ifr&linkID=4b2b828f3c612ad5e19bbbe6bef4602f&t=tora0818-22&tracking_id=tora0818-22" width="180" height="150" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+
+				<hr>
+
 				<div class="row" id="out">
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out01" src="" width="96px" height="96px">
-						<p>1人目用</p>
+						<p>1人目</p>
 					</div>  
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out02" src="" width="96px" height="96px">
-						<p>2人目用</p>
+						<p>2人目</p>
 					</div> 
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out03" src="" width="96px" height="96px">
-						<p>3人目用</p>
+						<p>3人目</p>
 					</div> 
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out04" src="" width="96px" height="96px">
-						<p>4人目用</p>
+						<p>4人目</p>
 					</div>
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out05" src="" width="96px" height="96px">
-						<p>5人目用</p>
+						<p>5人目</p>
 					</div>
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out06" src="" width="96px" height="96px">
-						<p>6人目用</p>
+						<p>6人目</p>
 					</div>
 					<div class="col-4 col-lg-4" style="text-align: center; display:none;">
 						<img id="out07" src="" width="96px" height="96px">
-						<p>7人目用</p>
+						<p>7人目</p>
 					</div>
 
 				</div>
 			</div>
 
 		</div>
+
+		<hr>
+		<p>
+			※このアプリは、2020年5月30日時点のTwitCastingの仕様に基づき製作されています。<br>
+			※OS・端末の違いによる動作の保証は致しかねます。
+		</p>
+		<p>
+			作成者（お問い合わせ先）：<a href="twitter.com/_TigerBrother">@_TigerBrother</a><br>
+			ソースコード：<a href="https://github.com/Tiger-Brother/twitcasting_collaboration_thumbnail">GitHub</a>
+		</p>
+
 	</div>
+
 
 
 	<!-- Optional JavaScript -->

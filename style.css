@@ -18,3 +18,11 @@
 .hidden, #hidden_thumbnail{
 	display: none;
 }
+
+h1{
+	padding-top:20px;
+}
+
+#out img{
+	border:#333 1px solid;
+}
