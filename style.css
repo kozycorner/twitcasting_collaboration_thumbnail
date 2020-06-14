@@ -15,6 +15,6 @@
 	left: 0px;
 }
 
-.hidden{
+.hidden, #hidden_thumbnail{
 	display: none;
 }

@@ -2,6 +2,8 @@ var base64Image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAEOCAIAAAD
 
 var option = 1;
 
+var url = "";
+
 function load_img(){
 	const output = document.getElementById('thumbnail');
 
@@ -11,45 +13,33 @@ function load_img(){
 		username = "null";
 	}
 
-	var url = 'https://coiogn4in2.execute-api.us-east-2.amazonaws.com/main/twitcasting/'
+	url = 'https://coiogn4in2.execute-api.us-east-2.amazonaws.com/main/twitcasting/'
 	+ username;
 
 	var thumbnail = document.getElementById('thumbnail');
 	thumbnail.setAttribute('src',url);
 
-	var data = {};
-
-	var messageArea = document.getElementById('message');
-	var message = "";
-/*
-	fetch(url ,{
-        method : "GET",
-        mode : "cors",
-        cache: "no-cache",
-        credentials: "omit",
-        headers: {
-			"Access-Control-Request-Method" : "POST",
-			"Access-Control-Request-Headers" : "X-PINGOTHER, Content-Type",
-        },
-        redirect: "follow",
-        referrer: "client",
-    })
-	.then(function(response) {
-		return response.json();
-	})
-	.then(function(myJson) {
-		//console.log(JSON.stringify(myJson));
-		//messageArea.innerHTML=myJson;
-		messageArea.innerHTML=myJson.body;
-		base64Image = myJson.body;
-	});
-*/
-
-	var thumbnail = document.getElementById('thumbnail');
-	thumbnail.setAttribute('src',url);
-
-	clop_img();
+	draw_thumbnail();
 }
+
+function draw_thumbnail(){
+	var canvas = document.getElementById('hidden_thumbnail');
+	canvas.setAttribute('width','480px');
+	canvas.setAttribute('height','270px');
+	var ctx = canvas.getContext('2d');
+	var img = document.getElementById('thumbnail');
+
+//	var img = new Image()
+
+	img.onload = e => {
+		ctx.drawImage(img, 0, 0, 480, 270);
+		base64Image = canvas.toDataURL("image/jpeg");
+		clop_img();
+	}
+
+//	img.src = url;
+}
+
 
 function clop_img(){
 	switch(option){
@@ -96,14 +86,17 @@ function draw_img(x, y, outId){
 	}
 	var ctx = canvas.getContext('2d');
 
-	var img = new Image();
+//	var img = new Image();
 
-	x *= -1;
-	y *= -1;
+	var img = new Image();
+//	img = document.getElementById('hidden_thumbnail');
+
+//	x *= -1;
+//	y *= -1;
 
 	img.onload = e => {
 //		ctxThumbnail.drawImage(img, 0, 0);
-		ctx.drawImage(img, x, y);
+		ctx.drawImage(img, x, y, 96, 96, 0, 0, 96, 96);
 		const data = canvas.toDataURL("image/png");
 
 		var outImg = document.getElementById(outId);	
@@ -111,7 +104,7 @@ function draw_img(x, y, outId){
 	}
 
 	img.src = base64Image;
-
+	
 }
 
 $(function(){
